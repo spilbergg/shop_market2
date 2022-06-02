@@ -1,0 +1,1 @@
+//alert('hello world, droid good, ime droid')

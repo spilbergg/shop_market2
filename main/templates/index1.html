@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Таблицы</title>
+    <link rel="stylesheet" href="{% static 'css/ind.css' %}">
+</head>
+<body>
+<h1 align="center"> Продукт </h1>
+<h2 style="color: yellow">{{ error  }}</h2>
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="text" name="products">
+    <button>ok</button>
+</form>
+{% for i in product %}
+<div style="border:2px solid green;">
+    <p>{{  i.title }}</p>
+    <p>{{ i.type_product }}</p>
+    <p>{{ i.discription }}</p>
+    <p>{{ i.price }}</p>
+    <p>{{ i.published }}</p>
+
+</div>
+{% endfor %}
+
+{% for d in products %}
+<div style="border:2px solid green;">
+    <p>{{  d.title }}</p>
+    <p>{{ d.type_product }}</p>
+    <p>{{ d.discription }}</p>
+    <p>{{ d.price }}</p>
+    <p>{{ d.published }}</p>
+
+</div>
+{% endfor %}
+
+</body>
+</html>

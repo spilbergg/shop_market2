@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить магазин</title>
+</head>
+<body>
+    <h1 align="center">Hi </h1>
+<div>
+    <form action="{% url 'market:add_shop' %}" method="POST">
+    {% csrf_token %}
+        <p><input type="text" name="shop_add">
+        <input type="submit" value="сохранить"><br></p>
+        {% for i in prod %}
+       <input type="checkbox" name="cat_deteil" value="{{ i.title }}"><strong>{{ i.title }}</strong><br>
+        {% endfor %}
+    </form>
+
+
+</div>
+</body>
+</html>

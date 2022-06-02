@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить продукт</title>
+</head>
+<body>
+    <h1 align="center">Добавление продукта</h1>
+<div align="center">
+    <form action="{% url 'market:add_product' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+         <p>Название<input type="text" name="product_title"></p>
+         <p>Описание<input type="text" name="product_description"></p>
+         <p>Цена<input type="text" name="product_price"></p>
+         <p>Изображение<input type="file" name="product_image"></p>
+         <p>Добавлен<input type="datetime-local" name="product_created"></p>
+         <p>Обновление<input type="datetime-local" name="product_update"></p>
+       <p></p><select name="product_categories">
+            {% for cat in categori %}
+                <option>{{ cat.name }}</option>
+            {% endfor %}
+        </select></p>
+        {% for cat_shop in product_shops %}
+        <input type="checkbox" name="product_shop" value="{{ cat_shop.name }}"><strong>{{ cat_shop.name }}</strong><br>
+        {% endfor %}
+         <p><input type="submit" value="сохранить"></p>
+    </form>
+</div>
+</body>
+</html>

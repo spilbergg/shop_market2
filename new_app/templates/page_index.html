@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/new_app.css' %}">
+</head>
+<body>
+<form action="{% url 'new_app:index' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>OK</button>
+</form>
+<form action="{% url 'new_app:new_person_form' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" placeholder="введите никнейм" name="nickname" value="{{ a.nickname }}"><strong class="stroka">{{ error_n }}</strong><br>
+    <input type="text" placeholder="введите login" name="login" value="{{ a.login }}"><strong class="stroka">{{ error_l }}</strong><br>
+    <input type="password" placeholder="введите password" name="password" value="{{ a.password }}"><strong class="stroka">{{ error_p }}</strong><br>
+    <input type="file" name="photo"><br>
+    <button>OK</button>
+</form>
+</body>
+</html>

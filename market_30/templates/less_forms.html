@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Less_FORMS</title>
+</head>
+<body>
+<h1>Form HTML</h1>
+<form action="{% url 'market:form_category' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="category" placeholder="введите категорию"><br>
+
+    <button>OK</button>
+</form>
+<h2>hello Product HTML</h2>
+<form action="" method="POST" style="border: 1px solid red; margin: 10px; width: 300px" enctype="multipart/form-data">
+     {% csrf_token %}
+    <input type="text" name="title"><br>
+    <textarea name="description" id="" cols="30" rows="10">
+
+    </textarea><br>
+    <input type="number" name="price"><br>
+    <input type="file" name="image"><br>
+    {% for i in categories %}
+    <input type="radio" name="categories" value="{{ i.name }}"> <strong>{{ i.name }}</strong><br>
+    {% endfor %}
+    <button>OK</button>
+</form>
+<h2>Shop Form HTML</h2>
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="text" name="name"><br>
+    <input type="text" name="city"><br>
+    <input type="text" name="street"><br>
+    {% for i in products %}
+    <input type="checkbox" name="shop" value="{{ i.title }}"><strong>{{ i.title }}</strong><br>
+    {% endfor %}
+    <button>OK</button>
+</form>
+<h2>Form class FORM категории</h2>
+<form action="{% url 'market:form_category' %}" method="POST">
+    {% csrf_token %}
+    {{ errors }}
+    {{ form.as_p }}
+    <button>Ok FORM</button>
+</form>
+<h2>Form class FORM продукты</h2>
+<form action="{% url 'market:product_form' %}" method="POST">
+    {% csrf_token %}
+    {{ forms.as_p }}
+    <button>Ok FORM</button>
+</form>
+
+</body>
+</html>

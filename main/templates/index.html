@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Таблицы</title>
+    <link rel="stylesheet" href="{% static 'css/ind.css' %}">
+</head>
+<body>
+<h1 align="center"> Продукт </h1>
+<h2 style="color: yellow">{{ error  }}</h2>
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="text" name="products">
+    <button>ok</button>
+</form>
+{% for i in product %}
+<div style="border:2px solid green;">
+    <p>{{  i.title }}</p>
+    <p>{{ i.type_product }}</p>
+    <p>{{ i.discription }}</p>
+    <p>{{ i.price }}</p>
+    <p>{{ i.published }}</p>
+
+</div>
+{% endfor %}
+
+{% for d in products %}
+<div style="border:2px solid green;">
+    <p>{{  d.title }}</p>
+    <p>{{ d.type_product }}</p>
+    <p>{{ d.discription }}</p>
+    <p>{{ d.price }}</p>
+    <p>{{ d.published }}</p>
+
+</div>
+{% endfor %}
+
+<h1 align="center"> Юзер </h1>
+{% for i in user %}
+<div style="border:2px solid green;">
+    <p>{{ i.firs_name }}</p>
+    <p>{{ i.last_name }}</p>
+    <p>{{ i.sex }}</p>
+    <p>{{ i.age }}</p>
+    <p>{{ i.mail }}</p>
+    <p>{{ i.country }}</p>
+    <p>{{ i.city }}</p>
+    <p>{{ i.cart }}</p>
+    <p>{{ i.telephone }}</p>
+    <img src="{{ i.foto.url }}">
+
+</div>
+{% endfor %}
+
+<h1 align="center"> Студенты </h1>
+{% for i in student %}
+<div style="border:2px solid green;">
+    <p>{{ i.name }}</p>
+    <p>{{ i.surname }}</p>
+    <p>{{ i.age }}</p>
+    <p>{{ i.sex }}</p>
+    <p>{{ i.university }}</p>
+    <p>{{ i.faculty }}</p>
+    <p>{{ i.form_education }}</p>
+    <p>{{ i.scientific }}</p>
+    <p>{{ i.course }}</p>
+
+</div>
+{% endfor %}
+
+<h1 align="center"> Учителя </h1>
+{% for i in teacher %}
+<div style="border:2px solid green;">
+    <p>{{ i.name }}</p>
+    <p>{{ i.surname }}</p>
+    <p>{{ i.age }}</p>
+    <p>{{ i.sex }}</p>
+    <p>{{ i.education }}</p>
+    <p>{{ i.place_work }}</p>
+    <p>{{ i.discipline }}</p>
+    <p>{{ i.scientific }}</p>
+    <p>{{ i.scientific_work }}</p>
+
+</div>
+{% endfor %}
+
+<h1 align="center"> Авто </h1>
+{% for i in auto %}
+<div style="border:2px solid red;">
+    <p>{{ i.brand }}</p>
+    <p>{{ i.model }}</p>
+    <p>{{ i.body_type }}</p>
+    <p>{{ i.engine_type }}</p>
+    <p>{{ i.transmission_type }}</p>
+    <p>{{ i.color }}</p>
+    <p>{{ i.weight }}</p>
+    <p>{{ i.year }}</p>
+    <p>{{ i.mileage }}</p>
+    <p>{{ i.price }}</p>
+
+</div>
+{% endfor %}
+</body>
+</html>
