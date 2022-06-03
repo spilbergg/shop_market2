@@ -118,20 +118,16 @@ def add_product(request):
         update = request.POST.get('product_update')
         product_categories = request.POST.get('product_categories')
         categories = Category.objects.get(name=product_categories)
-
-        # shop = get_shop(shop_id=request.POST.get('product_shop'))
-        # product = None
-        # product_shop = request.POST.get('product_shop')
-        # shop = Shop.objects.get(name=product_shop)
-
+        shop = request.POST.getlist('product_shop')
         if title and description and price:
             product = Product.objects.create(
                 title=title, description=description, price=price,
                 image=image, created=created, update=update, categories_id=categories.id
             )
 
-        if shop and product:
-            product.shop_set.add(product)
+            if shop and product:
+                for i in shop:
+                    product.shop_set.add(Shop.objects.get(name=i))
 
         return redirect('market:main_page')
 
